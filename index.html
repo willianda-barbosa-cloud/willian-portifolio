@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfólio de Willian, estudante de Programação de Sistemas do SENAI">
+  <title>Willian | Portfólio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Símbolos flutuantes do fundo (criados pelo script.js) -->
+  <div class="particulas" id="particulas" aria-hidden="true"></div>
+
+  <!-- ================= MENU ================= -->
+  <header class="topo" id="topo">
+    <nav class="menu container" aria-label="Menu principal">
+      <a href="#inicio" class="logo">&lt;Willian/&gt;</a>
+
+      <button class="menu-botao" id="menu-botao" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-links">☰</button>
+
+      <ul class="menu-links" id="menu-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#evolucao">Evolução</a></li>
+        <li><a href="#objetivos">Objetivos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ================= INÍCIO ================= -->
+    <section class="secao hero" id="inicio">
+      <div class="container hero-grade">
+        <div class="hero-texto">
+          <h1>Olá, eu sou Willian</h1>
+          <p class="hero-cargo">Estudante de Programação de Sistemas</p>
+          <!-- EDITE: frase sobre seu interesse por programação -->
+          <p class="hero-frase">Curioso por tecnologia, aprendendo a transformar ideias em sistemas e projetos com código.</p>
+          <div class="botoes">
+            <a href="#projetos" class="botao botao-principal">Ver projetos</a>
+            <a href="#sobre" class="botao botao-secundario">Sobre mim</a>
+            <a href="#habilidades" class="botao botao-secundario">Habilidades</a>
+          </div>
+        </div>
+
+        <div class="codigo" aria-hidden="true">
+          <div class="codigo-barra"><span></span><span></span><span></span></div>
+<pre><span class="c-k">const</span> willian = {
+  <span class="c-p">curso</span>: <span class="c-t">"Programação de Sistemas"</span>,
+  <span class="c-p">instituicao</span>: <span class="c-t">"SENAI"</span>,
+  <span class="c-p">cidade</span>: <span class="c-t">"São José - SC"</span>,
+  <span class="c-p">interesses</span>: [<span class="c-t">"programação"</span>, <span class="c-t">"jogos"</span>, <span class="c-t">"música"</span>]
+};</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SOBRE ================= -->
+    <section class="secao faixa" id="sobre">
+      <div class="container">
+        <header class="secao-titulo">
+          <h2>Sobre mim</h2>
+          <p>Quem eu sou e o que me move na tecnologia.</p>
+        </header>
+
+        <div class="sobre-grade">
+          <!-- EDITE: seus dados pessoais -->
+          <dl class="cartao dados">
+            <div><dt>Nome</dt><dd>Willian</dd></div>
+            <div><dt>Idade</dt><dd>16 anos</dd></div>
+            <div><dt>Curso</dt><dd>Programação de Sistemas</dd></div>
+            <div><dt>Instituição</dt><dd>SENAI</dd></div>
+            <div><dt>Cidade</dt><dd>São José - SC</dd></div>
+          </dl>
+
+          <div class="cartao sobre-texto">
+            <section>
+              <h3>Apresentação</h3>
+              <p>Sou estudante de Programação de Sistemas no SENAI e estou desenvolvendo meus conhecimentos na área de tecnologia. Gosto de estudar, testar ideias e colocar o que aprendo em prática nos meus projetos.</p>
+            </section>
+
+            <section>
+              <h3>Gostos e interesses</h3>
+              <!-- Para adicionar um interesse, copie uma linha <li> -->
+              <ul class="etiquetas">
+                <li>Programação e tecnologia</li>
+                <li>Jogos</li>
+                <li>Música, principalmente rock alternativo</li>
+                <li>Bandas como Radiohead, Korn e Slipknot</li>
+                <li>Desenvolvimento de sistemas e criação de projetos</li>
+              </ul>
+            </section>
+
+            <section>
+              <h3>Objetivos</h3>
+              <p>Continuar evoluindo na área de tecnologia, ganhando experiência com projetos e me preparando para as oportunidades que surgirem.</p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HABILIDADES ================= -->
+    <section class="secao" id="habilidades">
+      <div class="container">
+        <header class="secao-titulo">
+          <h2>Minhas habilidades</h2>
+          <p>Tecnologias e conhecimentos que venho estudando e usando nos meus projetos.</p>
+        </header>
+
+        <!-- Para adicionar uma habilidade, copie uma linha <li>. Para remover, apague a linha. -->
+        <ul class="habilidades">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Lógica de programação</li>
+          <li>Banco de dados</li>
+          <li>SQL</li>
+          <li>Git</li>
+          <li>GitHub</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= PROJETOS ================= -->
+    <section class="secao faixa" id="projetos">
+      <div class="container">
+        <header class="secao-titulo">
+          <h2>Meus projetos</h2>
+          <p>Projetos que estão no meu GitHub. Use os filtros para ver por tecnologia.</p>
+        </header>
+
+        <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos por tecnologia"></div>
+
+        <!-- Os cards são criados pelo script.js, a partir da lista "projetos" -->
+        <div class="projetos" id="lista-projetos">
+          <p class="aviso-js">Carregando projetos... Se esta mensagem não sumir, o arquivo script.js não foi carregado: confira se ele está na mesma pasta do index.html e se o nome é exatamente script.js.</p>
+        </div>
+        <p class="vazio" id="projetos-vazio" hidden>Nenhum projeto encontrado para este filtro.</p>
+
+        <!-- EDITE: troque pelo link do seu perfil no GitHub -->
+        <a class="botao botao-secundario ver-todos" href="https://github.com/" target="_blank" rel="noopener noreferrer">Ver todos os repositórios no GitHub</a>
+      </div>
+    </section>
+
+    <!-- ================= EVOLUÇÃO ================= -->
+    <section class="secao" id="evolucao">
+      <div class="container">
+        <header class="secao-titulo">
+          <h2>Minha evolução no SENAI</h2>
+          <p>O que venho aprendendo e desenvolvendo desde que comecei o curso.</p>
+        </header>
+
+        <div class="evolucao-grade">
+          <article class="cartao">
+            <h3>Lógica de programação</h3>
+            <p>Foi a base de tudo. Venho aprendendo a pensar em passos para resolver problemas antes de escrever o código.</p>
+          </article>
+          <article class="cartao">
+            <h3>Desenvolvimento de sistemas</h3>
+            <p>Estou entendendo como um sistema é planejado e construído, e como as partes se conectam para funcionar juntas.</p>
+          </article>
+          <article class="cartao">
+            <h3>HTML, CSS e JavaScript</h3>
+            <p>Com o HTML monto a estrutura, com o CSS cuido do visual e com o JavaScript deixo as páginas interativas. Este portfólio usa as três.</p>
+          </article>
+          <article class="cartao">
+            <h3>Banco de dados</h3>
+            <p>Venho aprendendo a organizar informações em bancos de dados e a consultá-las usando SQL.</p>
+          </article>
+          <article class="cartao">
+            <h3>Git e GitHub</h3>
+            <p>Uso o Git para controlar as versões do meu código e o GitHub para guardar e mostrar meus projetos.</p>
+          </article>
+          <article class="cartao">
+            <h3>Desenvolvimento de projetos</h3>
+            <p>Cada projeto me ajuda a juntar o que estudei e a aprender coisas novas ao longo do caminho.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= OBJETIVOS ================= -->
+    <section class="secao faixa" id="objetivos">
+      <div class="container">
+        <header class="secao-titulo">
+          <h2>Meus objetivos</h2>
+          <p>Onde quero chegar na área de tecnologia.</p>
+        </header>
+
+        <div class="objetivos-grade">
+          <div class="cartao">
+            <h3>Acadêmicos</h3>
+            <ul class="lista">
+              <li>Concluir o curso de Programação de Sistemas no SENAI</li>
+              <li>Aprofundar meus estudos em lógica, banco de dados e desenvolvimento de sistemas</li>
+              <li>Continuar aprendendo novas tecnologias</li>
+            </ul>
+          </div>
+          <div class="cartao">
+            <h3>Profissionais</h3>
+            <ul class="lista">
+              <li>Ganhar experiência desenvolvendo projetos</li>
+              <li>Construir um portfólio sólido no GitHub</li>
+              <li>Buscar oportunidades na área de tecnologia</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>© <span id="ano">2026</span> Willian · Feito com HTML, CSS e JavaScript</p>
+      <a href="#topo">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+/* ==========================================================
+   style.css — visual do portfólio (tema azul neon)
+   Para mudar as cores, edite só as variáveis abaixo.
+   ========================================================== */
+
+:root {
+  --fundo: #050b1f;
+  --faixa: #071230;
+  --cartao: #0a1636;
+  --neon: #22d3ff;
+  --brilho: #3b82f6;
+  --texto: #e8eeff;
+  --suave: #9fb2d9;
+  --borda: rgba(34, 211, 255, 0.3);
+  --luz: 0 0 16px rgba(34, 211, 255, 0.15);
+  --luz-forte: 0 0 26px rgba(34, 211, 255, 0.4);
+  --raio: 14px;
+  --fonte: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --fonte-codigo: Consolas, Menlo, monospace;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fonte);
+  color: var(--texto);
+  line-height: 1.65;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(59, 130, 246, 0.22), transparent 45%),
+    var(--fundo);
+  background-attachment: fixed;
+}
+
+/* Grade fina ao fundo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(34, 211, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+:focus-visible { outline: 3px solid var(--neon); outline-offset: 3px; }
+
+.container { width: min(1100px, 92%); margin: 0 auto; }
+main, .rodape { position: relative; z-index: 1; }
+
+/* ---------- Seções (todas seguem o mesmo padrão) ---------- */
+.secao { padding: 5rem 0; scroll-margin-top: 60px; }
+.faixa { background: var(--faixa); border-block: 1px solid rgba(34, 211, 255, 0.12); }
+
+.secao-titulo { margin-bottom: 2.5rem; }
+.secao-titulo h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.2; }
+.secao-titulo h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: 0.6rem 0 0.8rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--neon), var(--brilho));
+  box-shadow: 0 0 10px var(--neon);
+}
+.secao-titulo p { color: var(--suave); max-width: 60ch; }
+
+h3 { font-size: 1.05rem; color: var(--neon); margin-bottom: 0.5rem; }
+
+/* ---------- Símbolos flutuantes ---------- */
+.particulas { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
+.particula {
+  position: absolute;
+  top: 0;
+  font-family: var(--fonte-codigo);
+  color: var(--neon);
+  opacity: 0;
+  text-shadow: 0 0 10px var(--neon);
+  animation: flutuar linear infinite;
+}
+
+@keyframes flutuar {
+  0%   { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.3; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-10vh) rotate(40deg); opacity: 0; }
+}
+
+/* ---------- Menu ---------- */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(5, 11, 31, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--borda);
+}
+
+.menu { display: flex; align-items: center; justify-content: space-between; min-height: 60px; }
+
+.logo { font-weight: 700; color: var(--neon); text-shadow: 0 0 10px rgba(34, 211, 255, 0.5); }
+
+.menu-links { display: flex; gap: 1.6rem; }
+.menu-links a {
+  color: var(--suave);
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.menu-links a:hover,
+.menu-links a.ativo { color: #fff; border-color: var(--neon); }
+
+.menu-botao {
+  display: none;
+  font: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: transparent;
+  color: var(--neon);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+}
+
+/* ---------- Início ---------- */
+.hero { padding: 6rem 0; }
+
+.hero-grade { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+
+.hero-texto, .codigo { animation: entrar 0.8s ease both; }
+.codigo { animation-delay: 0.15s; }
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 6vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #ffffff, var(--neon) 65%, var(--brilho));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-cargo { font-size: clamp(1.1rem, 3vw, 1.4rem); color: var(--neon); font-weight: 600; margin: 0.8rem 0 1rem; }
+.hero-frase { color: var(--suave); max-width: 48ch; margin-bottom: 2rem; }
+
+.codigo {
+  background: #071028;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--luz);
+  overflow: hidden;
+}
+.codigo-barra { display: flex; gap: 6px; padding: 0.7rem 1rem; background: #050b1f; border-bottom: 1px solid var(--borda); }
+.codigo-barra span { width: 10px; height: 10px; border-radius: 50%; background: #23315a; }
+.codigo pre { font-family: var(--fonte-codigo); font-size: 0.88rem; line-height: 1.8; padding: 1.2rem 1.4rem; overflow-x: auto; }
+.c-k { color: var(--brilho); }
+.c-p { color: var(--neon); }
+.c-t { color: #9be6b4; }
+
+/* ---------- Botões ---------- */
+.botoes { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+.botao {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid var(--neon);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.botao:hover { transform: translateY(-3px); box-shadow: var(--luz-forte); }
+.botao-principal { background: linear-gradient(90deg, var(--brilho), var(--neon)); border-color: transparent; color: #03102b; }
+.botao-secundario { color: var(--neon); background: rgba(34, 211, 255, 0.05); }
+.botao-secundario:hover { background: rgba(34, 211, 255, 0.18); color: #fff; }
+
+/* ---------- Cartões (todos os cards usam esta base) ---------- */
+.cartao, .projeto, .habilidades li {
+  position: relative;
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--luz);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s, opacity 0.6s;
+}
+.cartao::before, .projeto::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+}
+.cartao:hover, .projeto:hover, .habilidades li:hover {
+  transform: translateY(-4px);
+  border-color: var(--neon);
+  box-shadow: var(--luz-forte);
+}
+
+.cartao { padding: 1.6rem; }
+.cartao p { color: var(--suave); }
+
+/* Efeito de entrada ao rolar (o script.js adiciona a classe .escondido) */
+.escondido { opacity: 0; transform: translateY(20px); }
+
+/* ---------- Sobre ---------- */
+.sobre-grade { display: grid; grid-template-columns: 1fr 1.6fr; gap: 1.5rem; align-items: start; }
+
+.dados div { padding: 0.75rem 0; border-bottom: 1px solid rgba(34, 211, 255, 0.15); }
+.dados div:first-child { padding-top: 0; }
+.dados div:last-child { border-bottom: none; padding-bottom: 0; }
+.dados dt { font-size: 0.85rem; color: var(--suave); }
+.dados dd { font-weight: 600; }
+
+.sobre-texto section { padding: 1.2rem 0; border-bottom: 1px solid rgba(34, 211, 255, 0.15); }
+.sobre-texto section:first-child { padding-top: 0; }
+.sobre-texto section:last-child { border-bottom: none; padding-bottom: 0; }
+.sobre-texto p { color: var(--texto); }
+
+.etiquetas { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.etiquetas li, .tecnologias li {
+  background: rgba(59, 130, 246, 0.14);
+  border: 1px solid rgba(59, 130, 246, 0.5);
+  border-radius: 999px;
+  padding: 0.2rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Habilidades ---------- */
+.habilidades { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; }
+.habilidades li { padding: 1.1rem 1rem; font-weight: 600; text-align: center; }
+
+/* ---------- Projetos ---------- */
+.filtros { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem; }
+
+.filtro {
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: transparent;
+  color: var(--texto);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.filtro:hover { box-shadow: var(--luz); }
+.filtro.ativo { background: var(--neon); border-color: var(--neon); color: #03102b; font-weight: 600; }
+
+.projetos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+
+.projeto { overflow: hidden; display: flex; flex-direction: column; }
+
+.projeto-imagem {
+  aspect-ratio: 16 / 9;
+  background: rgba(59, 130, 246, 0.1);
+  border-bottom: 1px solid var(--borda);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  color: var(--suave);
+  font-size: 0.9rem;
+}
+.projeto-imagem img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.projeto-corpo { padding: 1.3rem; display: flex; flex-direction: column; gap: 1rem; flex: 1; }
+.projeto-corpo h3 { font-size: 1.25rem; color: #fff; margin: 0; }
+.projeto-corpo p { font-size: 0.95rem; color: var(--suave); }
+.projeto-corpo strong { display: block; font-size: 0.85rem; color: var(--neon); margin-bottom: 0.1rem; }
+
+.tecnologias { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tecnologias li { font-size: 0.8rem; padding: 0.1rem 0.7rem; }
+
+.projeto .botao { margin-top: auto; text-align: center; padding: 0.55rem 1rem; }
+
+.ver-todos { margin-top: 2rem; }
+.vazio, .aviso-js { color: var(--suave); }
+.aviso-js { grid-column: 1 / -1; border: 1px dashed rgba(255, 196, 0, 0.6); border-radius: var(--raio); padding: 1rem; color: #ffe08a; }
+
+/* Texto que ainda precisa ser preenchido (marcado pelo JavaScript) */
+.pendente { background: rgba(255, 196, 0, 0.22); border-radius: 4px; padding: 0 0.25em; color: #ffe08a; }
+
+/* ---------- Evolução e Objetivos ---------- */
+.evolucao-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.objetivos-grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+.lista li { position: relative; padding-left: 1.2rem; margin-bottom: 0.6rem; color: var(--suave); }
+.lista li:last-child { margin-bottom: 0; }
+.lista li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 7px; height: 7px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 8px var(--neon); }
+
+/* ---------- Rodapé ---------- */
+.rodape { border-top: 1px solid var(--borda); padding: 1.6rem 0; color: var(--suave); font-size: 0.9rem; }
+.rodape .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+.rodape a:hover { color: var(--neon); }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .evolucao-grade { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .hero-grade, .sobre-grade, .objetivos-grade, .evolucao-grade { grid-template-columns: 1fr; }
+  .secao { padding: 3.5rem 0; }
+  .hero { padding: 3.5rem 0; }
+  .projetos { grid-template-columns: 1fr; }
+
+  .menu { position: relative; }
+  .menu-botao { display: block; }
+  .menu-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: rgba(5, 11, 31, 0.98);
+    border-bottom: 1px solid var(--borda);
+    padding: 1rem 1.2rem 1.2rem;
+  }
+  .menu-links.aberto { display: flex; }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+  .escondido { opacity: 1; transform: none; }
+  .particulas { display: none; }
+}
